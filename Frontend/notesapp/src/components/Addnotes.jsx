@@ -13,7 +13,8 @@ const Addnotes = () => {
             body,
             sub
         }
-        axios.post("https://naughty-bull-capris.cyclic.app/notes/add",JSON.stringify(payload),{headers:{"Authorization":`Bearer ${localStorage.getItem("token")}`}}).then((res)=>console.log(res)).catch((err)=>console.log(err))
+        axios.post("https://naughty-bull-capris.cyclic.app/notes/add",payload,{headers:{"Authorization":`Bearer ${localStorage.getItem("token")}`}}).then((res)=>console.log(res)).catch((err)=>console.log(err))
+        console.log(payload);
         setBody("");
         setSub("");
         setTitle("");
