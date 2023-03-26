@@ -4,6 +4,7 @@ const {userRouter} = require("./Routes/user.route");
 const {noteRouter} = require("./Routes/note.route");
 const {auth} = require("./middlewares/auth.middleware");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
@@ -13,7 +14,7 @@ app.use("/users",userRouter);
 app.use(auth);
 app.use("/notes",noteRouter);
 
-app.listen("8080",async()=>{
+app.listen(process.env.PORT,async()=>{
     try {
         await connection;
         console.log("connected to mongodb");
