@@ -1,11 +1,16 @@
 const express = require("express");
 const {NoteModel} = require("../model/note.model");
 const noteRouter = express.Router();
+const jwt = require("jsonwebtoken");
 
 noteRouter.get("/",async(req,res)=>{
+    const token = req.headers.authorization.split(" ")[1];
+    const decoded = jwt.verify(token,"bruce")
     try {
-        const notes = await NoteModel.find();
-        res.status(200).send(notes);
+        if(decoded){
+            const notes = await NoteModel.find({"userID":decoded.userID});
+            res.status(200).send(notes);
+        }
     } catch (err) {
         res.status(400).send({err:err.message});
     }
