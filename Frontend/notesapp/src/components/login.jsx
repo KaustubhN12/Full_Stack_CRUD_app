@@ -10,7 +10,7 @@ const Login = () => {
             email,
             pass
         }
-        axios.post("http://localhost:8080/users/login",payload).then((res)=>console.log(res)).catch((err)=>console.log(err));
+        axios.post("https://naughty-bull-capris.cyclic.app/users/login",payload).then((res)=>console.log(res)).catch((err)=>console.log(err));
         setEmail("");
         setPass("");
     }
